@@ -7,4 +7,9 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
+  def new
+    @book = Book.new
+    @book.year = 2019
+  end
+
 end
