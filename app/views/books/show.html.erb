@@ -2,7 +2,7 @@
 <table class="table table-striped">
   <tr>
     <th>年月</th>
-      <td><%= @book.year %>年<%= @book.month %>月</td>
+    <td><%= @book.year %>年<%= @book.month %>月</td>
   </tr>
   <tr>
     <th>区分</th>
@@ -17,4 +17,5 @@
     <td><%= @book.amount %>万円</td>
   </tr>
 </table>
+
 <%= link_to "戻る", books_path, class: "btn btn-secondary" %>
