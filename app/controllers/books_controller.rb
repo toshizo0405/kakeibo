@@ -29,7 +29,7 @@ class BooksController < ApplicationController
 
     def update
       @book = Book.find(params[:id])
-      book_params = params.require(:book).permit(:year, :month, :inout, :category, :amount)
+      book_params = params.require(:book).permit(:year, :month, :inont, :category, :amount)
       if @book.update(book_params)
         redirect_to books_path
       else
