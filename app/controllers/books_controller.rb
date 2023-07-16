@@ -1,11 +1,13 @@
 class BooksController < ApplicationController
+  
+  before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
     @books = Book.all
   end
 
   def show
-    @book = Book.find(params[:id])
+
   end
 
   def new
@@ -26,11 +28,11 @@ class BooksController < ApplicationController
   end
 
     def edit
-      @book = Book.find(params[:id])
+
     end
 
     def update
-      @book = Book.find(params[:id])
+
       book_params = params.require(:book).permit(:year, :month, :inont, :category, :amount)
       if @book.update(book_params)
         flash[:notice] = "データを1件更新しました。"
@@ -42,9 +44,15 @@ class BooksController < ApplicationController
     end
 
     def destroy
-      @book = Book.find(params[:id])
       @book.destroy
       flash[:notice] = "削除しました。"
       redirect_to books_path
     end
+
+    private
+
+    def set_book
+      @book = Book.find(params[:id])
+    end
+
 end
