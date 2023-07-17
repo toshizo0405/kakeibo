@@ -29,6 +29,7 @@
     <th>リンク</th>
   </tr>
 
+  <% sum = 0 %>
   <% @books.each do |book| %>
   <tr>
     <td><%= book.year %>年<%= book.month %>月</td>
@@ -41,5 +42,19 @@
       <%= link_to "削除", book_path(book), method: "delete", data: { confirm: '本当に削除しますか？' } , class: "btn btn-danger" %>
     </td>
   </tr>
+    <% if book.inout == 1 %>
+      <% sum += book.amount %>
+    <% else %>
+      <% sum -=book.amount %>
+    <% end %>
   <% end %>
+  
+  <tr>
+    <td></td>
+    <td></td>
+    <td>合計</td>
+    <td><%= sum %>万円</td>
+    <td></td>
+  </tr>
+  
 </table>
