@@ -30,6 +30,8 @@
   </tr>
 
   <% sum = 0 %>
+  <% expenditure_sum = 0 %>
+  <% income_sum = 0 %>
   <% @books.each do |book| %>
   <tr>
     <td><%= book.year %>年<%= book.month %>月</td>
@@ -49,13 +51,21 @@
     <% if book.inout == 1 %>
       <% sum += book.amount %>
     <% else %>
-      <% sum -=book.amount %>
+      <% sum -= book.amount %>
+    <% end %>
+    <% if book.inout == 1 %>
+      <% expenditure_sum += book.amount %>
+    <% end %>
+    <% if book.inout == 2 %>
+      <% income_sum += book.amount %>
     <% end %>
   <% end %>
 
   <tr>
-    <td></td>
-    <td></td>
+    <td>収入合計</td>
+    <td><%= expenditure_sum %>万円</td>
+    <td>支出合計</td>
+    <td><%= income_sum %>万円</td>
     <td>合計</td>
     <td><%= sum %>万円</td>
     <td></td>
