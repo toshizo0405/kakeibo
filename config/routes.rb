@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resources :books
+  
+  get "/signup", to: "users#new"
+  post "/signup", to: "users#create"
 
  # get "/books", to: "books#index"
  # post "/books" , to: "books#create"
